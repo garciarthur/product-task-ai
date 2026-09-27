@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Product Task AI</title>
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+</head>
+
+<body>
+
+  <div class="app-shell">
+
+    <!-- HEADER -->
+
+    <header class="app-navbar">
+
+  <div class="navbar-inner">
+
+    <div class="navbar-brand">
+
+      <div class="brand-mark">
+        ✦
+      </div>
+
+      <span class="brand-name">
+        Product Task AI
+      </span>
+
+      <span class="navbar-badge">
+        Beta
+      </span>
+
+    </div>
+
+
+    <nav class="navbar-actions">
+       
+      <div
+        class="new-task-tooltip"
+        id="new-task-tooltip"
+        data-tooltip="Comece descrevendo uma necessidade para criar uma nova tarefa."
+      >
+
+        <button
+          class="btn btn-secondary navbar-new-task"
+          id="new-task-button"
+          type="button"
+          disabled
+        >
+          <span class="navbar-action-icon">
+            +
+          </span>
+
+          Nova tarefa
+        </button>
+      </div>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <!-- MAIN -->
+
+<main class="app-main">
+
+  <!-- INTRO -->
+
+  <section class="workspace-intro">
+
+    <span class="workspace-eyebrow">
+      Product workspace
+    </span>
+
+    <h1>
+      Transforme uma necessidade em uma task pronta para desenvolvimento.
+    </h1>
+
+    <p>
+      Descreva o problema como você explicaria para o seu time.
+      A IA organiza o contexto em uma task clara e estruturada.
+    </p>
+
+  </section>
+
+
+  <!-- WORKSPACE -->
+
+  <section class="workspace">
+
+    <!-- INPUT -->
+
+    <div class="workspace-column">
+
+      <section class="card task-input-card">
+
+        <div class="card-header">
+
+          <div>
+
+            <span class="panel-label">
+              Entrada
+            </span>
+
+            <h2 class="workspace-card-title">
+              Descreva a necessidade
+            </h2>
+
+            <p class="card-description">
+              Não precisa estruturar a task. Conte apenas o que está acontecendo.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="card-content">
+
+          <div class="task-composer">
+
+            <textarea
+              class="task-composer-input"
+              id="problem-description"
+              placeholder="Descreva o problema, comportamento atual ou melhoria que você identificou..."
+            ></textarea>
+
+
+            <div class="task-composer-footer">
+
+              <div
+                class="ai-status ai-status-idle"
+                id="generation-status"
+              >
+                <span class="status-dot"></span>
+
+                <span id="generation-status-text">
+                  IA pronta
+                </span>
+              </div>
+
+
+              <button
+                class="btn btn-primary generate-task-button"
+                id="generate-task-button"
+                type="button"
+                disabled
+              >
+                <span class="generate-icon">
+                  ✦
+                </span>
+
+                Gerar task
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <p class="composer-helper">
+            Dica: inclua o comportamento atual, o problema percebido
+            e o que você espera melhorar.
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+<!-- =====================================
+     RESULT
+====================================== -->
+
+<div class="workspace-column">
+
+  <section class="result-panel">
+
+<div
+  class="result-panel-heading"
+  id="result-panel-heading"
+>
+
+      <div>
+
+        <span class="panel-label">
+          Resultado
+        </span>
+
+        <h2 class="workspace-card-title">
+          Task estruturada
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <!-- RESULT SURFACE -->
+
+    <div
+      class="result-surface"
+      id="result-surface"
+      aria-live="polite"
+    >
+
+
+      <!-- =================================
+           EMPTY STATE
+      ================================== -->
+
+      <div
+        class="result-state result-empty-state"
+        id="result-empty-state"
+      >
+
+        <div
+          class="empty-state-icon"
+          aria-hidden="true"
+        >
+          ✦
+        </div>
+
+        <h3>
+          Sua task aparecerá aqui
+        </h3>
+
+        <p>
+          Depois da geração, sua necessidade será organizada
+          em quatro partes.
+        </p>
+
+        <div class="empty-state-structure">
+
+          <span>Título</span>
+
+          <span>Descrição</span>
+
+          <span>Objetivo</span>
+
+          <span>Critérios de aceite</span>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================
+           LOADING STATE
+      ================================== -->
+
+      <div
+        class="result-state result-loading-state"
+        id="result-loading-state"
+        hidden
+      >
+
+        <div
+          class="result-loading-icon"
+          aria-hidden="true"
+        >
+          ✦
+        </div>
+
+        <h3>
+          Estruturando sua task...
+        </h3>
+
+        <p>
+          Estamos organizando o contexto informado.
+        </p>
+
+        <div class="generation-steps">
+
+          <div class="generation-step">
+            <span class="generation-step-dot"></span>
+            Analisando a necessidade
+          </div>
+
+          <div class="generation-step">
+            <span class="generation-step-dot"></span>
+            Definindo o objetivo
+          </div>
+
+          <div class="generation-step">
+            <span class="generation-step-dot"></span>
+            Criando critérios de aceite
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================
+           ERROR STATE
+      ================================== -->
+
+      <div
+        class="result-state result-error-state"
+        id="result-error-state"
+        hidden
+      >
+
+        <div
+          class="result-error-icon"
+          aria-hidden="true"
+        >
+          !
+        </div>
+
+        <h3>
+          Não foi possível gerar a task
+        </h3>
+
+        <p id="result-error-message">
+          Ocorreu um problema durante a geração.
+        </p>
+
+        <button
+          class="btn btn-secondary"
+          id="retry-task-button"
+          type="button"
+        >
+          Tentar novamente
+        </button>
+
+      </div>
+
+
+      <!-- =================================
+           SUCCESS STATE
+      ================================== -->
+
+      <article
+        class="task-result-view"
+        id="task-result"
+        hidden
+      >
+
+        <div class="task-result-header">
+
+          <div>
+
+            <div class="ai-status ai-status-success">
+
+              <span class="status-dot"></span>
+
+              <span>
+                Concluído
+              </span>
+
+            </div>
+
+            <h3 class="task-result-title">
+              Task gerada
+            </h3>
+
+            <p class="card-description">
+              Revise o conteúdo antes de copiar para o Zoho.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="task-result-content">
+
+          <div class="task-section">
+
+            <span class="task-section-label">
+              Título
+            </span>
+
+            <p
+              class="task-section-text task-title-text"
+              id="result-title"
+            ></p>
+
+          </div>
+
+
+          <div class="task-section">
+
+            <span class="task-section-label">
+              Descrição
+            </span>
+
+            <p
+              class="task-section-text"
+              id="result-description"
+            ></p>
+
+          </div>
+
+
+          <div class="task-section">
+
+            <span class="task-section-label">
+              Objetivo
+            </span>
+
+            <p
+              class="task-section-text"
+              id="result-objective"
+            ></p>
+
+          </div>
+
+
+          <div class="task-section">
+
+            <span class="task-section-label">
+              Critérios de aceite
+            </span>
+
+            <ul
+              class="acceptance-list"
+              id="result-acceptance"
+            ></ul>
+
+          </div>
+
+        </div>
+
+
+        <div class="task-result-actions">
+
+          <button
+            class="btn btn-secondary"
+            id="regenerate-button"
+            type="button"
+          >
+            Gerar novamente
+          </button>
+
+          <button
+            class="btn btn-primary"
+            id="copy-task-button"
+            type="button"
+          >
+            Copiar task
+          </button>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</div>
+
+  </section>
+
+</main>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

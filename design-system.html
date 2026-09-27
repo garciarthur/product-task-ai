@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+  <!-- =========================================
+       METADATA
+  ========================================== -->
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+
+  <!-- =========================================
+       PAGE
+  ========================================== -->
+
+  <title>
+    Product Task AI — Design System
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+</head>
+
+
+<body>
+
+  <main class="design-system-preview">
+
+
+    <!-- =======================================
+         INTRODUCTION
+    ======================================== -->
+
+    <section class="preview-section">
+
+      <h1>
+        Product Task AI Design System
+      </h1>
+
+      <p class="preview-description">
+        Componentes utilizados na interface do Product Task AI.
+      </p>
+
+    </section>
+
+
+    <!-- =======================================
+         BUTTONS
+    ======================================== -->
+
+    <section class="preview-section">
+
+      <h2>
+        Botões
+      </h2>
+
+
+      <div class="button-group">
+
+        <button class="btn btn-primary">
+          Gerar task
+        </button>
+
+        <button class="btn btn-secondary">
+          Copiar task
+        </button>
+
+        <button
+          class="btn btn-primary"
+          disabled
+        >
+          Gerar task
+        </button>
+
+        <button class="btn btn-primary btn-loading">
+          Gerando...
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================
+         FORM FIELDS
+    ======================================== -->
+
+    <section class="preview-section">
+
+      <h2>
+        Campos de formulário
+      </h2>
+
+
+      <div class="form-preview">
+
+        <div class="form-group">
+
+          <label
+            class="form-label"
+            for="preview-task-title"
+          >
+            Título da task
+          </label>
+
+          <input
+            class="form-input"
+            id="preview-task-title"
+            type="text"
+            placeholder="Exemplo: Melhorar criação de workflows"
+          >
+
+          <span class="form-helper">
+            Dê à task um título curto e objetivo.
+          </span>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label
+            class="form-label"
+            for="preview-problem"
+          >
+            Descreva o problema
+          </label>
+
+          <textarea
+            class="form-textarea"
+            id="preview-problem"
+            placeholder="Descreva o problema, dor do usuário ou melhoria identificada..."
+          ></textarea>
+
+          <span class="form-helper">
+            Adicione o contexto necessário para estruturar a task.
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================
+         CARD
+    ======================================== -->
+
+    <section class="preview-section">
+
+      <h2>
+        Card
+      </h2>
+
+
+      <div class="card-preview">
+
+        <article class="card">
+
+          <div class="card-header">
+
+            <div>
+
+              <h3 class="card-title">
+                Exemplo de card
+              </h3>
+
+              <p class="card-description">
+                Estrutura base para organizar informações no produto.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="card-content">
+
+            <p>
+              O conteúdo principal do card é exibido nesta área.
+            </p>
+
+          </div>
+
+
+          <div class="card-footer">
+
+            <button class="btn btn-secondary">
+              Ação secundária
+            </button>
+
+            <button class="btn btn-primary">
+              Ação principal
+            </button>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================
+         AI STATUS
+    ======================================== -->
+
+    <section class="preview-section">
+
+      <h2>
+        Status da IA
+      </h2>
+
+
+      <div class="status-group">
+
+        <div class="ai-status ai-status-idle">
+
+          <span class="status-dot"></span>
+
+          <span>
+            IA pronta
+          </span>
+
+        </div>
+
+
+        <div class="ai-status ai-status-loading">
+
+          <span class="status-dot"></span>
+
+          <span>
+            Gerando...
+          </span>
+
+        </div>
+
+
+        <div class="ai-status ai-status-success">
+
+          <span class="status-dot"></span>
+
+          <span>
+            Concluído
+          </span>
+
+        </div>
+
+
+        <div class="ai-status ai-status-error">
+
+          <span class="status-dot"></span>
+
+          <span>
+            Erro
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================
+         TASK RESULT
+    ======================================== -->
+
+    <section class="preview-section">
+
+      <h2>
+        Resultado da task
+      </h2>
+
+
+      <article class="card task-result-card">
+
+        <div class="card-header task-result-header">
+
+          <div>
+
+            <div class="ai-status ai-status-success">
+
+              <span class="status-dot"></span>
+
+              <span>
+                Concluído
+              </span>
+
+            </div>
+
+
+            <h3 class="task-result-title">
+              Task gerada
+            </h3>
+
+            <p class="card-description">
+              Revise as informações antes de copiar para o Zoho.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="card-content task-result-content">
+
+
+          <div class="task-section">
+
+            <span class="task-section-label">
+              Título
+            </span>
+
+            <p class="task-section-text task-title-text">
+              Melhorar orientação durante a criação de workflows
+            </p>
+
+          </div>
+
+
+          <div class="task-section">
+
+            <span class="task-section-label">
+              Descrição
+            </span>
+
+            <p class="task-section-text">
+              Atualmente, o usuário não possui orientação suficiente
+              durante a construção do workflow.
+            </p>
+
+          </div>
+
+
+          <div class="task-section">
+
+            <span class="task-section-label">
+              Objetivo
+            </span>
+
+            <p class="task-section-text">
+              Facilitar a criação de workflows e reduzir dúvidas durante
+              a configuração do fluxo.
+            </p>
+
+          </div>
+
+
+          <div class="task-section">
+
+            <span class="task-section-label">
+              Critérios de aceite
+            </span>
+
+            <ul class="acceptance-list">
+
+              <li>
+                Cada bloco deve possuir uma orientação clara sobre sua função.
+              </li>
+
+              <li>
+                As orientações devem estar disponíveis durante a criação.
+              </li>
+
+              <li>
+                O fluxo existente deve continuar funcionando normalmente.
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+
+        <div class="card-footer task-result-footer">
+
+          <button class="btn btn-secondary">
+            Gerar novamente
+          </button>
+
+          <button class="btn btn-primary">
+            Copiar task
+          </button>
+
+        </div>
+
+      </article>
+
+    </section>
+
+  </main>
+
+</body>
+
+</html>
